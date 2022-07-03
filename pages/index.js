@@ -1,49 +1,17 @@
-import Head from 'next/head';
-import Footer from '../components/Footer';
-import PostCard from '../components/PostCard';
-import { getAllPosts } from '../lib/test-data';
-
-
-export default function Home({ posts }) {
+import React from 'react'
+import Vacatures from './vacatures'
+import Link from "next/link"
+export default function home() {
   return (
-    <div className="container">
-      <Head>
-        <title>Headless WP Next Starter</title>
-        <link rel="icon" href="favicon.ico"></link>
-      </Head>
+    <div>
+       <nav>
+        <Link href="/vacatures">
+          vacatures
+        </Link>
+      </nav>
 
-      <main>
-        <h1 className="title">
-          Headless WordPress Next.js Starter
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          {
-            posts.map((post) => {
-              return (
-                <PostCard key={post.uri} post={post}></PostCard>
-              )
-            })
-          }
-        </div>
-      </main>
-
-      <Footer></Footer>
+      <h1>Weken by site</h1>
+     
     </div>
   )
-}
-
-export async function getStaticProps(){
-
-  const response = await getAllPosts()
-  const posts = response?.data?.posts?.nodes
-  return {
-    props: {
-      posts
-    }
-  }
 }
