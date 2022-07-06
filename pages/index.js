@@ -1,11 +1,11 @@
-import React from 'react'
-import Vacatures from './vacatures'
+
+import jobs from './jobs'
 import Link from "next/link"
 export default function home() {
   return (
     <div>
        <nav>
-        <Link href="/vacatures">
+        <Link href="/jobs">
           vacatures
         </Link>
       </nav>

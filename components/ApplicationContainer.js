@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import Footer from '../components/Footer';
-import PostCard from '../components/PostCard';
-import { client } from '../lib/apollo';
+import Footer from '../../components/Footer';
+import ApplictationCard from '../../components/ApplictationCard';
+import { client } from '../../lib/apollo';
 // import { getAllPosts } from '../lib/test-data';
 import {gql} from '@apollo/client'
 import { useState } from 'react';
 
-export default function vacatures({ posts }) {
+export default function jobs({ jobs }) {
     const [searchField, setSearchField] = useState("");
     const handleChange = e => {
         setSearchField(e.target.value);
 
       };
-      const filteredPersons = posts.filter(
+      const filteredPersons = jobs.filter(
         post => {
           return (
             post
@@ -42,9 +42,9 @@ export default function vacatures({ posts }) {
 
         <div className="grid">
           {
-            filteredPersons.map((post) => {
+            filteredPersons.map((job) => {
               return (
-                <PostCard key={post.uri} post={post}></PostCard>
+                <ApplictationCard key={job.uri} job={job}></ApplictationCard>
               )
             })
           }
@@ -57,9 +57,9 @@ export default function vacatures({ posts }) {
 }
 
 export async function getStaticProps(){
-  const GET_POSTS=gql`
-  query GET_ALL_POSTS {
-    posts {
+  const GET_JOBS=gql`
+  query GET_ALL_JOBS {
+    jobs {
       nodes {
         title
         content
@@ -69,13 +69,13 @@ export async function getStaticProps(){
     }
   }`
   const response=await client.query({
-    query: GET_POSTS,
+    query: GET_JOBS,
   })
   
-  const posts = response?.data?.posts?.nodes
+  const jobs = response?.data?.jobs?.nodes
   return {
     props: {
-      posts
+      jobs
     }
   }
 }
