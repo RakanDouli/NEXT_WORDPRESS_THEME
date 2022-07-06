@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import Footer from '../../components/Footer';
-import ApplictationCard from '../../components/ApplictationCard';
+import Footer from '../../components/Footer/Footer';
+import ApplictationCard from '../../components/application-card/ApplicationCard';
 import { client } from '../../lib/apollo';
 // import { getAllPosts } from '../lib/test-data';
 import {gql} from '@apollo/client'
 import { useState } from 'react';
+import Header from '../../components/header/Header';
 
 export default function jobs({ jobs }) {
     const [searchField, setSearchField] = useState("");
@@ -24,23 +25,18 @@ export default function jobs({ jobs }) {
       );
 
   return (
-    <div className="container">
+    <div>
       <Head>
         <title>Werken By site</title>
         <link rel="icon" href="favicon.ico"></link>
       </Head>
-
-      <main>
-        <h1 className="title">
-         Search vacatures
-        </h1>
-        <div>
-        <label htmlFor="search"> Search </label>
-        <input  type="search" onChange={handleChange} />
+      <Header></Header>
+      <div>
+        <div className='Filter'>
+         <label htmlFor="search"> Search </label>
+         <input  type="search" onChange={handleChange} />
         </div>
-
-
-        <div className="grid">
+        <div className="list">
           {
             filteredPersons.map((job) => {
               return (
@@ -49,7 +45,7 @@ export default function jobs({ jobs }) {
             })
           }
         </div>
-      </main>
+      </div>
 
       <Footer></Footer>
     </div>

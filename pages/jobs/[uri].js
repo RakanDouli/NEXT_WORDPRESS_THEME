@@ -1,17 +1,18 @@
 import Head from 'next/head'
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer/Footer'
 import { client } from '../../lib/apollo';
 import {gql} from '@apollo/client'
+import Header from '../../components/header/Header';
 
 export default function SlugPage({ job }) {
-console.log('%c[uri].js line:8 job', 'color: #007acc;', job);
+
  return (
     <div>
       <Head>
-        <title>Headless WP Next Starter</title>
+        <title>Job Application Page</title>
         <link rel="icon" href="favicon.ico"></link>
       </Head>
-
+      <Header></Header>
       <main>
       
             <h1 className="title">

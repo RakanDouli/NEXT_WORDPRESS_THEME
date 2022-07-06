@@ -1,17 +1,13 @@
+import Header from '../components/header/Header'
 
-import jobs from './jobs'
-import Link from "next/link"
 export default function home() {
   return (
     <div>
-       <nav>
-        <Link href="/jobs">
-          vacatures
-        </Link>
-      </nav>
+   
+      <Header></Header>
 
-      <h1>Weken by site</h1>
-     
+      <h1>Home page</h1>
+      <h2>Werken Bij</h2>
     </div>
   )
 }
