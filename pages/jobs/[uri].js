@@ -3,6 +3,7 @@ import Footer from '../../components/Footer/Footer'
 import { client } from '../../lib/apollo';
 import {gql} from '@apollo/client'
 import Header from '../../components/header/Header';
+import styled from 'styled-components';
 
 export default function SlugPage({ job }) {
 
@@ -13,7 +14,7 @@ export default function SlugPage({ job }) {
         <link rel="icon" href="favicon.ico"></link>
       </Head>
       <Header></Header>
-      <main>
+      <BodySection>
       
             <h1 className="title">
                 {job?.title}
@@ -21,7 +22,7 @@ export default function SlugPage({ job }) {
   
            
           
-      </main>
+      </BodySection>
 
 
       <Footer></Footer>
@@ -70,3 +71,9 @@ export async function getStaticPaths(){
         fallback: 'blocking'
     }
 }
+
+export const BodySection=styled.section`
+min-height: 85vh;
+height: 100%;
+padding: 40px 30px;
+`

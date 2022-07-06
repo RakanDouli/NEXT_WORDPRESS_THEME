@@ -1,16 +1,16 @@
-
 import {ApolloProvider} from "@apollo/client/react"
 import { client } from '../lib/apollo'
 import GlobalStyles from "../styles/GlobalStyles"
+import Theme from "../styles/Theme"
 
 function MyApp({ Component, pageProps }) {
   return (
-
-      <ApolloProvider client={client}>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </ApolloProvider>
-    
+      <Theme>
+        <ApolloProvider client={client}>
+          <GlobalStyles />
+          <Component {...pageProps} />
+        </ApolloProvider>
+      </Theme>
     )
 }
 

@@ -6,6 +6,7 @@ import { client } from '../../lib/apollo';
 import {gql} from '@apollo/client'
 import { useState } from 'react';
 import Header from '../../components/header/Header';
+import styled from 'styled-components';
 
 export default function jobs({ jobs }) {
     const [searchField, setSearchField] = useState("");
@@ -31,7 +32,7 @@ export default function jobs({ jobs }) {
         <link rel="icon" href="favicon.ico"></link>
       </Head>
       <Header></Header>
-      <div>
+      <BodySection>
         <div className='Filter'>
          <label htmlFor="search"> Search </label>
          <input  type="search" onChange={handleChange} />
@@ -45,7 +46,7 @@ export default function jobs({ jobs }) {
             })
           }
         </div>
-      </div>
+      </BodySection>
 
       <Footer></Footer>
     </div>
@@ -75,3 +76,8 @@ export async function getStaticProps(){
     }
   }
 }
+export const BodySection=styled.section`
+min-height: 85vh;
+height: 100%;
+padding: 40px 30px;
+`

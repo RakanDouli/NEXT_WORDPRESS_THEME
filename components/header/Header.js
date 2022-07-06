@@ -15,7 +15,7 @@ export default function Header() {
           <path fillRule="evenodd" clipRule="evenodd" d="M15.8464 2.96296H8.58307e-06L6.67216 9.63511H22.5185L15.8464 2.96296ZM6.67215 9.63512V25.4815L0 18.8093V2.96297L6.67215 9.63512Z" fill="#CCCCCC"/>
           <path fillRule="evenodd" clipRule="evenodd" d="M6.67218 25.4815L22.5185 25.4815L15.8464 18.8093L2.28882e-05 18.8093L6.67218 25.4815ZM15.8464 18.8093L15.8464 2.96296L22.5186 9.63511L22.5186 25.4815L15.8464 18.8093Z" fill="white"/>
           </svg>
-          </Link>
+        </Link>
         </Logo>
    
        <MenuItems>
@@ -32,7 +32,7 @@ const Nav=styled.nav`
 display: flex;
 justify-content: space-between;
 align-items: center;
-background-color:${props=>console.log(props)};
+background-color:${props=>props.theme.colors.color1};
 padding: 15px 30px;
 a{
   text-decoration: none;

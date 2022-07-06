@@ -1,7 +1,8 @@
+import styled from "styled-components"
 
 export default function Footer (){
     return (
-        <footer>
+        <StyledFooter>
             <a
             href="https://developers.wpengine.com"
             target="_blank"
@@ -9,6 +10,16 @@ export default function Footer (){
             >
             Part of the WP Engine Headless Developers Road Map 🗺️ 
             </a>
-        </footer>
+        </StyledFooter>
     )
 }
+
+const StyledFooter=styled.footer`
+background-color: ${props=>props.theme.colors.color2};
+padding: 15px 30px;
+margin-top: 40px;
+
+a{
+    color:${props=>props.theme.colors.white}
+}
+`
