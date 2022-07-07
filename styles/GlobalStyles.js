@@ -9,6 +9,9 @@ export default createGlobalStyle`
 
 body {
   margin: 0;
+  background-color:${props=>props.theme.colors.color1};
+  color: ${props=>props.theme.colors.white};
+
 }
 
 main {
@@ -33,6 +36,8 @@ pre {
 
 a {
   background-color: transparent;
+  text-decoration: none;
+  color: ${props=>props.theme.colors.white};
 }
 
 abbr[title] {
