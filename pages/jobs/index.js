@@ -1,22 +1,16 @@
 import Head from "next/head";
 import Footer from "../../components/Footer/Footer";
-import ApplictationCard from "../../components/application-container/application-card/ApplicationCard";
+import ApplictationCard from "../../components/application-container/ApplicationCard";
 import { client } from "../../lib/apollo";
 // import { getAllPosts } from '../lib/test-data';
 import { gql } from "@apollo/client";
-import { useState } from "react";
+
 import Header from "../../components/header/Header";
 import styled from "styled-components";
 import ApplicationContainer from "../../components/application-container/ApplicationContainer";
+
 export default function jobs({ jobs }) {
-  const [searchField, setSearchField] = useState("");
-  const handleChange = (e) => {
-    setSearchField(e.target.value);
-  };
-  // let uniqueItems = [...new Set(items)]
-  const filtered = jobs.filter((post) => {
-    return post.title.toLowerCase().includes(searchField.toLowerCase());
-  });
+  // console.log(jobs);
 
   return (
     <div>
@@ -26,14 +20,7 @@ export default function jobs({ jobs }) {
       </Head>
       <Header></Header>
 
-      <ApplicationContainer
-        VacaturesFound={filtered.length}
-        handleChange={handleChange}
-      >
-        {filtered.map((job) => {
-          return <ApplictationCard key={job.uri} job={job}></ApplictationCard>;
-        })}
-      </ApplicationContainer>
+      <ApplicationContainer jobs={jobs} />
 
       <Footer></Footer>
     </div>

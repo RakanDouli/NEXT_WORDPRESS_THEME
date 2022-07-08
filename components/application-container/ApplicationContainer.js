@@ -1,69 +1,93 @@
-import React from "react";
 import styled from "styled-components";
+import ApplicationFilter from "./ApplicationFilter";
+import { FaRegWindowClose } from "react-icons/Fa";
+import { useState } from "react";
+import ApplictationCard from "./ApplicationCard";
 
-export default function ApplicationContainer({
-  handleChange,
-  VacaturesFound,
-  children,
-}) {
+export default function ApplicationContainer({ jobs }) {
+  const [searchField, setSearchField] = useState("");
+
+  // let uniqueItems = [...new Set(items)]
+  const filteredSearch = jobs.filter((post) => {
+    return (
+      post.title.toLowerCase().includes(searchField.toLowerCase()) &&
+      post.jobs.categoryCopy
+        .toLowerCase()
+        .includes(searchRegio.toLowerCase()) &&
+      post.jobs.category.toLowerCase().includes(searchSector.toLowerCase())
+    );
+  });
+
+  // remove duplicate
+  const Regiofields = jobs.map((job) => job.jobs.categoryCopy);
+  const Regios = [...new Set(Regiofields)];
+
+  //
+  const changeRegio = (e) => {
+    setSearchRegio(e.target.value);
+  };
+  // remove duplicate
+  const Sectorfields = jobs.map((job) => job.jobs.category);
+  const Sectors = [...new Set(Sectorfields)];
+  //
+  const changeSector = (e) => {
+    setSearchSector(e.target.value);
+  };
+  const ResetHandler = () => {
+    setSearchField("");
+    setSearchRegio("");
+    setSearchSector("");
+  };
   return (
     <StyledApplicationContainer className="ApplicationContainer">
-      <StyledFilter className="Filter">
-        <StyledInputField className="InputField">
-          <input type="search" onChange={handleChange} placeholder="Search" />
-        </StyledInputField>
-      </StyledFilter>
+      <ApplicationFilter
+        Regios={Regios}
+        changeRegio={changeRegio}
+        Sectors={Sectors}
+        changeSector={changeSector}
+        handleChange={handleChange}
+      />
       <StyledApplicationContainerlist className="ApplicationContainerlist">
-        <StyledVacatures>{VacaturesFound} vacaure(s) gevonden</StyledVacatures>
-        {children}
+        <StyledApplicationListHeader>
+          <div>
+            <div>{filteredSearch.length} vacaure(s) gevonden</div>
+            <div className="reset-filter" onClick={ResetHandler}>
+              <FaRegWindowClose />
+              <p> Reset filter</p>
+            </div>
+          </div>
+        </StyledApplicationListHeader>
+        {filteredSearch.map((job) => {
+          return <ApplictationCard key={job.uri} job={job}></ApplictationCard>;
+        })}
       </StyledApplicationContainerlist>
     </StyledApplicationContainer>
   );
 }
 const StyledApplicationContainer = styled.section`
-  height: 80vh;
+  min-height: 80vh;
   padding: 30px;
   display: flex;
   width: 100%;
+  position: relative;
 `;
-const StyledInputField = styled.div`
-  /* width: 100%; */
-  input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    color: ${(props) => props.theme.colors.white};
-    background-color: ${(props) => props.theme.colors.color1};
-    ::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: ${(props) => props.theme.colors.white};
-      opacity: 1; /* Firefox */
-    }
 
-    :-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: ${(props) => props.theme.colors.white};
-    }
-
-    ::-ms-input-placeholder {
-      /* Microsoft Edge */
-      color: ${(props) => props.theme.colors.white};
-    }
-    /* ::-webkit-search-cancel-button{
-    
-    } */
-  }
-`;
-const StyledFilter = styled.div`
-  width: 35%;
-  background-color: ${(props) => props.theme.colors.color2};
-  height: 100%;
-  padding: 30px 20px;
-`;
 const StyledApplicationContainerlist = styled.div`
   width: 100%;
   padding: 0 0 20px 20px;
 `;
-const StyledVacatures = styled.div`
+const StyledApplicationListHeader = styled.div`
   padding: 20px 0;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .reset-filter {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    svg {
+      margin-right: 5px;
+    }
+  }
 `;
