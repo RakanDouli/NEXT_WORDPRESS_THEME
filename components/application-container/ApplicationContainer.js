@@ -6,7 +6,12 @@ import ApplictationCard from "./ApplicationCard";
 
 export default function ApplicationContainer({ jobs }) {
   const [searchField, setSearchField] = useState("");
+  const [searchRegio, setSearchRegio] = useState("");
+  const [searchSector, setSearchSector] = useState("");
 
+  const handleChange = (e) => {
+    setSearchField(e.target.value);
+  };
   // let uniqueItems = [...new Set(items)]
   const filteredSearch = jobs.filter((post) => {
     return (
