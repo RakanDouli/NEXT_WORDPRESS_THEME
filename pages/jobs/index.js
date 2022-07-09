@@ -38,7 +38,7 @@ export async function getStaticProps() {
             jobDescription
             salary
             category
-            categoryCopy
+            regio
             education
           }
           uri

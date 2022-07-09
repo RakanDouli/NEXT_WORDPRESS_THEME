@@ -24,7 +24,7 @@ export default function SlugPage({ job }) {
           <StyledCardFeatures>
             <li>
               <ImLocation />
-              {job.jobs.categoryCopy}
+              {job.jobs.regio}
             </li>
             <li>
               <GiReceiveMoney />
@@ -163,7 +163,7 @@ export async function getStaticProps({ params }) {
         jobs {
           aboutYou
           category
-          categoryCopy
+          regio
           education
           fieldGroupName
           hoursPerWeek

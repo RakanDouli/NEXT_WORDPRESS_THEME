@@ -6,51 +6,61 @@ import ApplictationCard from "./ApplicationCard";
 
 export default function ApplicationContainer({ jobs }) {
   const [searchField, setSearchField] = useState("");
-  const [searchRegio, setSearchRegio] = useState("");
-  const [searchSector, setSearchSector] = useState("");
+  const [checkbox, setCheckbox] = useState([]);
+  console.log(checkbox.length);
+  let filteredSearch = [];
+  // .replace(/\s+/g, " ").trim()
+  if (searchField.length > 0) {
+    filteredSearch = jobs.filter((job) => {
+      return job.title.toLowerCase().includes(searchField.toLowerCase());
+    });
+  } else if (checkbox.length > 0) {
+    filteredSearch = jobs.filter((job) => {
+      return (
+        checkbox.some(
+          (box) => box.toLowerCase() === job.jobs.regio.toLowerCase()
+        ) ||
+        checkbox.some(
+          (box) => box.toLowerCase() === job.jobs.category.toLowerCase()
+        )
+      );
+    });
+  } else {
+    filteredSearch = jobs;
+  }
 
-  const handleChange = (e) => {
+  console.log(
+    "%cApplicationContainer.js line:17 filteredSearch",
+    "color: #007acc;",
+    filteredSearch
+  );
+
+  console.log("checkbox", checkbox);
+
+  const SearchHandler = (e) => {
     setSearchField(e.target.value);
   };
-  // let uniqueItems = [...new Set(items)]
-  const filteredSearch = jobs.filter((post) => {
-    return (
-      post.title.toLowerCase().includes(searchField.toLowerCase()) &&
-      post.jobs.categoryCopy
-        .toLowerCase()
-        .includes(searchRegio.toLowerCase()) &&
-      post.jobs.category.toLowerCase().includes(searchSector.toLowerCase())
-    );
-  });
-
-  // remove duplicate
-  const Regiofields = jobs.map((job) => job.jobs.categoryCopy);
-  const Regios = [...new Set(Regiofields)];
-
-  //
-  const changeRegio = (e) => {
-    setSearchRegio(e.target.value);
-  };
-  // remove duplicate
-  const Sectorfields = jobs.map((job) => job.jobs.category);
-  const Sectors = [...new Set(Sectorfields)];
-  //
-  const changeSector = (e) => {
-    setSearchSector(e.target.value);
+  const CheckboxHandler = (e) => {
+    var updatedList = [...checkbox];
+    if (e.target.checked) {
+      updatedList = [...checkbox, e.target.value];
+    } else {
+      updatedList.splice(checkbox.indexOf(e.target.value), 1);
+    }
+    setCheckbox(updatedList);
   };
   const ResetHandler = () => {
     setSearchField("");
-    setSearchRegio("");
-    setSearchSector("");
+    setCheckbox("");
   };
+
   return (
     <StyledApplicationContainer className="ApplicationContainer">
       <ApplicationFilter
-        Regios={Regios}
-        changeRegio={changeRegio}
-        Sectors={Sectors}
-        changeSector={changeSector}
-        handleChange={handleChange}
+        jobs={jobs}
+        searchField={searchField}
+        CheckboxHandler={CheckboxHandler}
+        SearchHandler={SearchHandler}
       />
       <StyledApplicationContainerlist className="ApplicationContainerlist">
         <StyledApplicationListHeader>

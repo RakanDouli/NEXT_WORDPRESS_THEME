@@ -11,7 +11,7 @@ export default function ApplictationCard({ job }) {
           <StyledCardFeatures>
             <li>
               <ImLocation />
-              {job.jobs.categoryCopy}
+              {job.jobs.regio}
             </li>
             <li>
               <ImCalendar />
