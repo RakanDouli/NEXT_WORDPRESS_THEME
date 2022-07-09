@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/footer/Footer";
 import ApplictationCard from "../../components/application-container/ApplicationCard";
 import { client } from "../../lib/apollo";
 // import { getAllPosts } from '../lib/test-data';

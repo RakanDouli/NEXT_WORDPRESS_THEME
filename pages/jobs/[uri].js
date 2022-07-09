@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/footer/Footer";
 import { client } from "../../lib/apollo";
 import { gql } from "@apollo/client";
 import Header from "../../components/header/Header";
 import styled from "styled-components";
-import { Location, Calendar } from "react-icons/im";
-import { Building, ExclamationCircle } from "react-icons/fa";
-import { ReceiveMoney } from "react-icons/Gi";
+// import { ImLocation, ImCalendar } from "react-icons/im";
+// import { FaBuilding, FaExclamationCircle } from "react-icons/fa";
+// import { GiReceiveMoney } from "react-icons/Gi";
 
 export default function SlugPage({ job }) {
   return (
@@ -23,23 +23,23 @@ export default function SlugPage({ job }) {
           <h1 className="title">{job?.title}</h1>
           <StyledCardFeatures>
             <li>
-              <Location />
+              {/* <ImLocation /> */}
               {job.jobs.regio}
             </li>
             <li>
-              <ReceiveMoney />
+              {/* <GiReceiveMoney /> */}
               {job.jobs.salary}
             </li>
             <li>
-              <Calendar />
+              {/* <ImCalendar /> */}
               {job.jobs.hoursPerWeek}
             </li>
             <li>
-              <Building />
+              {/* <FaBuilding /> */}
               {job.jobs.education}
             </li>
             <li>
-              <ExclamationCircle />
+              {/* <FaExclamationCircle /> */}
               {job.jobId}
             </li>
           </StyledCardFeatures>
