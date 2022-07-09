@@ -38,9 +38,9 @@ export default function ApplicationFilter({
       </StyledInputField>
       <StyledCheckbox>
         <h3>Regio</h3>
-        {regios.map((regio) => {
+        {regios.map((regio, index) => {
           return (
-            <div>
+            <div key={index}>
               <input
                 id={regio}
                 type="checkbox"
@@ -57,9 +57,9 @@ export default function ApplicationFilter({
       </StyledCheckbox>
       <StyledCheckbox>
         <h3>Categories</h3>
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           return (
-            <div>
+            <div key={index}>
               <input
                 id={category}
                 type="checkbox"

@@ -1,4 +1,3 @@
-import jobs from "../../pages/jobs";
 import styled from "styled-components";
 
 import Link from "next/link";
