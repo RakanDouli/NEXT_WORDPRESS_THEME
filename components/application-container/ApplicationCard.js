@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { ImLocation, ImCalendar } from "react-icons/im";
-import { FaBuilding, FaExclamationCircle } from "react-icons/fa";
+import { Location, Calendar } from "react-icons/im";
+import { Building, ExclamationCircle } from "react-icons/fa";
 
 export default function ApplictationCard({ job }) {
   return (
@@ -10,19 +10,19 @@ export default function ApplictationCard({ job }) {
         <di className="card">
           <StyledCardFeatures>
             <li>
-              <ImLocation />
+              <Location />
               {job.jobs.regio}
             </li>
             <li>
-              <ImCalendar />
+              <Calendar />
               {job.jobs.hoursPerWeek}
             </li>
             <li>
-              <FaBuilding />
+              <Building />
               {job.jobs.education}
             </li>
             <li>
-              <FaExclamationCircle />
+              <ExclamationCircle />
               {job.jobId}
             </li>
           </StyledCardFeatures>
