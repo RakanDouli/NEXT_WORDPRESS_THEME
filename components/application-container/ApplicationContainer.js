@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ApplicationFilter from "./ApplicationFilter";
-import { FaRegWindowClose } from "react-icons/Fa";
+// import { FaRegWindowClose } from "react-icons/Fa";
 import { useState } from "react";
 import ApplictationCard from "./ApplicationCard";
 
@@ -67,7 +67,7 @@ export default function ApplicationContainer({ jobs }) {
           <div>
             <div>{filteredSearch.length} vacaure(s) gevonden</div>
             <div className="reset-filter" onClick={ResetHandler}>
-              <FaRegWindowClose />
+              {/* <FaRegWindowClose /> */}
               <p> Reset filter</p>
             </div>
           </div>
